@@ -259,7 +259,7 @@
             display: flex;
             flex-direction: column;
             gap: 48px;
-            max-width: 1000px; /* Increased from 800px */
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -270,25 +270,246 @@
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
+            width: 100%;
+            aspect-ratio: 16/9; /* This ensures proper video dimensions */
+            border-radius: 8px;
+            margin-bottom: 8px;
             overflow: hidden;
-            border-radius: 12px; /* Slightly increased for larger size */
         }
 
-        .video-wrapper video {
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            border: none;
             border-radius: 8px;
-            margin-bottom: 16px;
         }
 
         .video-title {
-            font-size: 24px; /* Increased from 20px to match larger videos */
+            font-size: 20px;
             font-weight: 500;
             color: #000;
-            margin-top: 24px; /* Increased from 16px */
+            margin-top: 8px; /* Reduced from 16px to 8px */
             font-family: 'Poppins', sans-serif;
             font-style: italic;
+        }
+
+        /* Enroll Now section styles */
+        .enroll-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .enroll-container {
+            display: flex;
+            align-items: flex-start; /* Changed from center to flex-start */
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            gap: 48px;
+        }
+
+        .form-section {
+            flex: 1;
+            max-width: 600px;
+            text-align: left; /* Ensure form section is left-aligned */
+        }
+
+        .form-iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left; /* Ensure form groups are left-aligned */
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #333;
+            text-align: left; /* Explicitly set labels to left-aligned */
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: #CE4245;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+        }
+
+        .character-image {
+            flex: 1;
+            max-width: 400px;
+            height: auto;
+            position: sticky;
+            top: 24px; /* This will make the image stick while scrolling the form */
+        }
+
+        /* Pricing section styles */
+        .pricing-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #F2EEE3; /* Same as hero section background */
+        }
+
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+            padding: 0 24px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            flex: 1;
+            max-width: 400px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .price {
+            color: #3E9B74;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .duration {
+            font-size: 24px;
+            color: #333;
+            margin-top: 24px;
+        }
+
+        .resource-section {
+            text-align: center;
+            margin-top: 64px;
+        }
+
+        .resource-button {
+            background: #4B5FA3;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .resource-title {
+            color: #4B5FA3;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .resource-description {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* Contact section styles */
+        .contact-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            text-align: left;
+        }
+
+        .contact-method {
+            margin-bottom: 48px; /* Increased margin to accommodate larger elements */
+            text-align: left;
+        }
+
+        .contact-icon {
+            width: 48px; /* Increased from 32px */
+            height: 48px; /* Increased from 32px */
+            color: #CE4245;
+            margin-bottom: 16px;
+            display: block;
+            margin-right: auto;
+        }
+
+        .contact-label {
+            color: #CE4245;
+            font-size: 32px; /* Increased from 24px */
+            margin-bottom: 12px; /* Slightly increased */
+            text-align: left;
+        }
+
+        .contact-value {
+            font-size: 24px; /* Increased from 20px */
+            color: #333;
+            text-decoration: none;
+            display: block;
+            line-height: 1.6; /* Adjusted for larger text */
+            text-align: left;
+        }
+
+        .contact-images {
+            display: flex;
+            gap: 24px;
+        }
+
+        .contact-image {
+            width: 300px;
+            height: 450px; /* Increased height */
+            object-fit: cover;
+            border-radius: 16px;
+            border: 2px solid #F1BE69;
         }
     </style>
 </head>
@@ -402,6 +623,110 @@
                     </iframe>
                 </div>
                 <h3 class="video-title">"Ei Khoni Gaon"</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enroll Now section -->
+    <section class="enroll-section">
+        <h2 class="section-heading">Enroll With Us</h2>
+        <div class="enroll-container">
+            <div class="form-section">
+                <form id="enrollForm">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-input" placeholder="Enter your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="Enter your email">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-input" placeholder="Enter your age">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Country</label>
+                        <input type="text" class="form-input" placeholder="Enter your country">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Whatsapp Number</label>
+                        <input type="tel" class="form-input" placeholder="Enter your WhatsApp number">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-textarea" placeholder="Write your message here"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+            </div>
+            <img src="character.svg" alt="Guitar Player Character" class="character-image">
+        </div>
+    </section>
+
+    <!-- Pricing section -->
+    <section class="pricing-section">
+        <h2 class="section-heading">Pricing</h2>
+        <div class="pricing-container">
+            <div class="pricing-card">
+                <div class="price">$80/m</div>
+                <div class="duration">1 day per week</div>
+            </div>
+            <div class="pricing-card">
+                <div class="price">$160/m</div>
+                <div class="duration">2 days per week</div>
+            </div>
+        </div>
+
+        <div class="resource-section">
+            <button class="resource-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 12V22H4V12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 7H2V12H22V7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 22V7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 7H7.5C6.83696 7 6.20107 6.73661 5.73223 6.26777C5.26339 5.79893 5 5.16304 5 4.5C5 3.83696 5.26339 3.20107 5.73223 2.73223C6.20107 2.26339 6.83696 2 7.5 2C11 2 12 7 12 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 7H16.5C17.163 7 17.7989 6.73661 18.2678 6.26777C18.7366 5.79893 19 5.16304 19 4.5C19 3.83696 18.7366 3.20107 18.2678 2.73223C17.7989 2.26339 17.163 2 16.5 2C13 2 12 7 12 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Free Resource Kit
+            </button>
+            <h3 class="resource-title">Here is a free resource kit for you for dropping by here</h3>
+            <p class="resource-description">Click the above button to download</p>
+        </div>
+    </section>
+
+    <!-- Contact Us section -->
+    <section class="contact-section">
+        <h2 class="section-heading">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-method">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="2"/>
+                        <path d="M2 7L12 14L22 7" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <h3 class="contact-label">Email</h3>
+                    <a href="mailto:janakaushik123@gmail.com" class="contact-value">janakaushik123@gmail.com</a>
+                </div>
+
+                <div class="contact-method">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 16.92V19.92C22 20.4704 21.7893 20.9987 21.4142 21.3738C21.0391 21.7489 20.5109 21.9596 19.96 21.96C16.4289 21.9599 12.9882 20.8383 10.0399 18.72C7.2775 16.7718 5.00766 14.1119 3.35999 11C1.20001 7.58581 0.0782509 3.64019 0.0799902 2.67999C0.0803365 2.12903 0.291012 1.60067 0.666252 1.22547C1.04149 0.850273 1.5698 0.639684 2.12075 0.639994H5.12076C6.10143 0.625684 6.9725 1.34909 7.11999 2.31999C7.23662 3.42332 7.47144 4.50832 7.81999 5.56001C8.0636 6.25802 7.94785 7.02848 7.51999 7.64001L6.27999 9.36001C7.81001 12.2 10.08 14.47 12.92 16L14.64 14.76C15.2515 14.3321 16.022 14.2164 16.72 14.46C17.7717 14.8085 18.8567 15.0433 19.96 15.16C20.9542 15.3092 21.6882 16.2092 21.66 17.21L22 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3 class="contact-label">Phone call</h3>
+                    <a href="tel:+919901994170" class="contact-value">+91 9901994170</a>
+                    <a href="tel:+919611919401" class="contact-value">+91 9611919401</a>
+                </div>
+            </div>
+
+            <div class="contact-images">
+                <img src="Janak.jpeg" alt="Janak" class="contact-image">
+                <img src="Kaushik.jpeg" alt="Kaushik" class="contact-image">
             </div>
         </div>
     </section>
