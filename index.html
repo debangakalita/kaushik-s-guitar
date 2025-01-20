@@ -154,8 +154,8 @@
 
         /* Course cards styling */
         .courses-container {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 32px;
             max-width: 1200px;
             margin: 0 auto;
@@ -459,8 +459,11 @@
         }
 
         .contact-container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            margin-left: 40px;  /* Add consistent margin */
+            margin-right: 40px; /* Add consistent margin */
             padding: 0 24px;
             display: flex;
             justify-content: space-between;
@@ -881,39 +884,24 @@
             transition: all 0.3s ease-in-out;
         }
 
-        /* Add new breakpoint for 1100px */
+        /* Hero breakpoints from largest to smallest */
+        @media screen and (max-width: 1280px) {
+            .hero-section {
+                padding-left: 150px;
+            }
+
+            .hero-image {
+                width: 480px;
+            }
+        }
+
         @media screen and (max-width: 1100px) {
             .hero-section {
                 padding-left: 140px;
             }
-        }
-
-        /* Custom breakpoint for 950px */
-        @media screen and (max-width: 950px) {
-            .hero-section {
-                padding-left: 80px; /* Reduced padding */
-                width: 100%;
-                overflow: hidden; /* Prevent horizontal scroll */
-            }
 
             .hero-image {
-                width: 50%;
-                right: 40px; /* Reduced right spacing */
-                transform: scale(0.85);
-            }
-
-            .content-wrapper {
-                transform: scale(0.85);
-                margin-right: 0;
-            }
-
-            /* Adjust border positions */
-            .border-left {
-                left: 12px; /* Reduced from 24px */
-            }
-
-            .border-right {
-                right: 12px; /* Reduced from 24px */
+                width: 450px;
             }
         }
 
@@ -921,77 +909,110 @@
         @media screen and (max-width: 1080px) {
             .hero-section {
                 padding: 1.5rem 0;
-                padding-left: 120px; /* Add left padding */
                 position: relative;
-                display: flex;
-                align-items: center;
             }
 
             .hero-content {
                 max-width: 95%;
-                margin: 0 auto; /* Center the content */
-                padding: 0 2rem; /* Even padding on both sides */
-                gap: 1.5rem;
-                position: relative;
-                z-index: 1;
+                margin: 0 auto;
+                padding: 0 3rem;
+                gap: 2rem;
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
+                justify-content: space-between;
             }
 
             .hero-text {
                 flex: 0 1 45%;
-                padding-right: 0.5rem;
-                margin-left: 3rem; /* Increased margin to keep text inside border */
-                max-width: 40%; /* Limit text width */
+                padding-left: 2rem;
+                padding-right: 1rem;
+                max-width: 45%;
             }
 
             .hero-text h1 {
-                font-size: 2.25rem;
-                line-height: 1.3;
+                font-size: 2.5rem;
+                line-height: 1.2;
                 margin-bottom: 1rem;
             }
 
-            .hero-text p {
-                font-size: 1rem;
-                line-height: 1.6;
+            .hero-text h1 span {
+                font-size: 1.8rem;
+                display: block;
+                margin-bottom: 0.5rem;
             }
 
-            .hero-image-wrapper {
-                flex: 0 1 45%;
-                display: flex;
-                justify-content: flex-start; /* Align to start */
-                margin-right: 2rem;
+            .hero-text p {
+                font-size: 1.1rem;
+                line-height: 1.5;
+                margin-bottom: 1.5rem;
             }
 
             .hero-image {
-                width: 44%; /* Reduced from 55% (20% reduction) */
-                transform: scale(0.8); /* Make image 20% smaller */
-                transform-origin: right center; /* Scale from right side */
-                margin-right: 0;
-                position: absolute;
-                right: 120px; /* Align with right padding */
-            }
-
-            /* Border design adjustments */
-            .border-design {
-                width: 98%;
-                height: 96%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 0;
+                flex: 0 1 50%;
+                max-width: 70%;
+                height: auto;
+                margin-right: 2rem;
             }
 
             .hero-buttons {
-                margin-left: 0; /* Remove any left margin */
+                padding-left: 2rem;
+                display: flex;
+                gap: 1rem;
+            }
+
+            .hero-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 950px) {
+            .hero-section {
+                padding-left: 80px;
+                overflow: hidden;
             }
 
             .content-wrapper {
-                transform: scale(0.8); /* Make content wrapper 20% smaller */
-                transform-origin: left center; /* Scale from left side */
-                margin-right: 2rem; /* Add some space between content and image */
+                transform: scale(0.85);
+            }
+
+            .hero-image {
+                width: 380px;
+                right: 60px;
+                transform: scale(0.85);
+            }
+
+            .border-left {
+                left: 12px;
+            }
+
+            .border-right {
+                right: 12px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-section {
+                padding: 1.5rem;
+                padding-left: 60px;
+                min-height: 100vh;
+                justify-content: center;
+            }
+
+            .content-wrapper {
+                transform: scale(0.8);
+                margin: 0 auto;
+                width: 100%;
+                max-width: 600px;
+            }
+
+            .hero-image {
+                position: relative;
+                right: auto;
+                width: 80%;
+                max-width: 400px;
+                margin: 2rem auto;
+                transform: scale(1);
             }
         }
 
@@ -1098,6 +1119,223 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        /* Add new breakpoint for contact images at 1200px */
+        @media screen and (max-width: 1200px) {
+            .contact-container {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .contact-image {
+                width: 255px;  /* Reduced from 300px by 15% */
+                height: 382px; /* Reduced from 450px by 15% */
+            }
+
+            .contact-images {
+                gap: 20px;
+            }
+        }
+
+        /* Remove margins completely for mobile views */
+        @media (max-width: 768px) {
+            .contact-container {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-image {
+                width: 100%;
+                max-width: 240px; /* Match the 1200px breakpoint max size */
+                height: auto;
+                aspect-ratio: 2/3;
+            }
+        }
+
+        /* Add margins for containers between 769px and 1279px */
+        @media screen and (min-width: 769px) and (max-width: 1279px) {
+            .courses-container,
+            .videos-container,
+            .enroll-container,
+            .pricing-container,
+            .contact-container {
+                margin-left: 30px;
+                margin-right: 30px;
+                width: calc(100% - 60px); /* Adjust width to account for margins */
+            }
+        }
+
+        /* Update existing 768px breakpoint to remove margins */
+        @media (max-width: 768px) {
+            .courses-container,
+            .videos-container,
+            .enroll-container,
+            .pricing-container,
+            .contact-container {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+            }
+        }
+
+        /* Add new breakpoint for contact section layout change at 1000px */
+        @media screen and (max-width: 1000px) {
+            .contact-container {
+                flex-direction: column;
+                gap: 48px;
+            }
+
+            .contact-images {
+                order: -1; /* Move images to top */
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-info {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+                gap: 32px;
+            }
+
+            .contact-method {
+                margin-bottom: 0; /* Remove bottom margin since we're using flex gap */
+            }
+        }
+
+        /* Update existing mobile styles */
+        @media (max-width: 480px) {
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 48px;
+            }
+
+            .contact-method {
+                text-align: center;
+            }
+
+            .contact-images {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Update courses container styles */
+        .courses-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Add new breakpoint for courses layout between 480px and 800px */
+        @media screen and (min-width: 480px) and (max-width: 800px) {
+            .courses-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            /* Target the last card to make it centered in the second row */
+            .course-card:last-child {
+                grid-column: 1 / 3;
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
+
+        /* Update existing mobile styles */
+        @media (max-width: 480px) {
+            .courses-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .course-card {
+                width: 100%;
+            }
+        }
+
+        /* Add new breakpoint for contact images between 375px and 640px */
+        @media screen and (min-width: 375px) and (max-width: 640px) {
+            .contact-images {
+                flex-direction: row; /* Keep images side by side */
+                justify-content: center;
+                gap: 16px; /* Reduce gap between images */
+            }
+
+            .contact-image {
+                width: 160px; /* Reduce image width */
+                height: 240px; /* Maintain aspect ratio */
+                margin: 0; /* Remove any margins */
+            }
+        }
+
+        /* Update existing mobile styles for very small screens */
+        @media (max-width: 374px) {
+            .contact-images {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+            }
+
+            .contact-image {
+                width: 200px;
+                height: 300px;
+            }
+        }
+
+        /* Add styles for contact section below 640px */
+        @media screen and (max-width: 640px) {
+            .contact-info {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 32px;
+            }
+
+            .contact-method {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 32px;
+            }
+
+            .contact-icon {
+                margin: 0 auto 16px;
+                display: block;
+            }
+
+            .contact-label {
+                text-align: center;
+                width: 100%;
+            }
+
+            .contact-value {
+                text-align: center;
+                width: 100%;
+            }
+
+            .contact-images {
+                flex-direction: row;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .contact-image {
+                width: 160px;
+                height: 240px;
+                margin: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1136,30 +1374,30 @@
             <div class="course-card">
                 <h3>Month 1</h3>
                 <ul class="course-list">
-                    <li>PARTS OF THE GUITAR</li>
-                    <li>OPEN STRING NAMES</li>
-                    <li>TUNING YOUR FIRST GUITAR</li>
-                    <li>READING TABS AND PLAYING HALF CHORDS</li>
+                    <li>Parts of the guitar</li>
+                    <li>Open string names</li>
+                    <li>Tuning your first guitar</li>
+                    <li>Reading tabs and playing half chords</li>
                 </ul>
             </div>
 
             <div class="course-card">
                 <h3>Month 2</h3>
                 <ul class="course-list">
-                    <li>MUSIC THEORY:</li>
-                    <li class="scale-header">SCALES -</li>
-                    <li class="scale-list">C MAJOR, G MAJOR, D MAJOR, E MINOR, A MINOR</li>
-                    <li>APPLYING TABS TO PLAY SIMPLE MELODIES</li>
-                    <li>STRUMMING PATTERNS</li>
-                    <li>LEARN TO SING AND PLAY MANUH MANUH HOR BABE</li>
+                    <li>Music theory:</li>
+                    <li class="scale-header">Scales -</li>
+                    <li class="scale-list">C major, G major, D major, E minor, A minor</li>
+                    <li>Applying tabs to play simple melodies</li>
+                    <li>Strumming patterns</li>
+                    <li>Learn to sing and play Manuh Manuh Hor Babe</li>
                 </ul>
             </div>
 
             <div class="course-card">
                 <h3>Month 3 & 4</h3>
                 <ul class="course-list">
-                    <li>SING AND PLAY DEKHA NAI</li>
-                    <li>SING AND PLAY EI KHONI GAON</li>
+                    <li>Sing and play Dekha Nai</li>
+                    <li>Sing and play Ei Khoni Gaon</li>
                 </ul>
             </div>
         </div>
