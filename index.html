@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Page Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-section {
+            background-color: #F2EEE3;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-left: 166px;
+            overflow: hidden; /* Added to ensure image doesn't create scrollbars */
+        }
+
+        .border-left,
+        .border-right {
+            position: absolute; /* Changed from fixed to absolute */
+            top: 0;
+            height: 100%; /* Changed from 100vh to 100% */
+            width: 50px;
+            background-image: url('herosectionborder.svg');
+            background-repeat: repeat-y;
+            background-size: contain;
+        }
+
+        .border-left {
+            left: 24px;
+        }
+
+        .border-right {
+            right: 24px;
+            transform: scaleX(-1);
+        }
+
+        .jaapi {
+            position: absolute;
+            width: 156px;
+            height: auto;
+            top: 0;
+            right: 120px;
+        }
+
+        .jaapi img {
+            width: 100%;
+            height: auto;
+            transform-origin: top center;
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            margin-top: 0;
+        }
+
+        .text-block {
+            display: flex;
+            flex-direction: column;
+            gap: 4px; /* Reduced spacing between Assamese and English text to 4px */
+        }
+
+        .assamese-text {
+            font-size: 24px;
+            line-height: 1.5;
+        }
+
+        .english-text {
+            font-size: 48px;
+            max-width: 600px;
+            line-height: 1.2;
+        }
+
+        .assamese-songs {
+            color: #CE4245;
+            font-size: 48px;
+            font-weight: 600;
+        }
+
+        .cta-block {
+            display: flex;
+            gap: 16px;
+        }
+
+        .cta-button {
+            padding: 12px 24px;
+            border: 1px solid #D19A5D;
+            border-radius: 8px;
+            background: transparent;
+            cursor: pointer;
+            font-size: 18px;
+            color: #D19A5D;
+        }
+
+        .cta-button:first-child {
+            background: #CE4245;
+            border: none;
+            color: white; /* Added to ensure text is visible on red background */
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 120px;
+            bottom: 0;
+            width: 500px;
+        }
+
+        /* Add logo styling */
+        .logo {
+            position: absolute;
+            top: 24px; /* Adjust top spacing as needed */
+            left: 50%;
+            transform: translateX(-50%); /* Centers the logo */
+            width: 200px; /* Adjust width as needed */
+            height: auto;
+        }
+
+        /* Add new styles for courses section */
+        .courses-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-heading {
+            font-size: 40px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 60px;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #EB1C25;
+        }
+
+        /* Course cards styling */
+        .courses-container {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .course-card {
+            flex: 1;
+            border: 1px solid #F1BE69;
+            border-radius: 8px;
+            padding: 32px 24px;
+            text-align: left;
+        }
+
+        .course-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .course-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .course-list li {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 16px;
+            line-height: 1.5;
+            padding-left: 16px; /* Add consistent padding for all items */
+            position: relative; /* For bullet point positioning */
+        }
+
+        .course-list li::before {
+            content: "•";
+            color: #F1BE69;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Add new style for scale items */
+        .scale-header {
+            margin-bottom: 8px !important;
+        }
+
+        .scale-list {
+            padding-left: 16px;
+            margin-bottom: 16px !important;
+        }
+
+        .scale-header::before,
+        .scale-list::before {
+            display: none !important; /* Removes bullet points */
+        }
+
+        /* Update scale items styling */
+        .scale-header,
+        .scale-list {
+            padding-left: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        .scale-header::before,
+        .scale-list::before {
+            display: none !important;
+        }
+
+        /* Update download link styles */
+        .download-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 40px;
+            color: #EB1C25;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .download-link:hover {
+            text-decoration: underline;
+        }
+
+        .download-icon {
+            width: 16px; /* Adjusted to match text height */
+            height: 16px; /* Adjusted to match text height */
+        }
+
+        /* Demo Videos section styles */
+        .demo-videos-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #F2EEE3;
+        }
+
+        .videos-container {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            max-width: 1000px; /* Increased from 800px */
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .video-wrapper {
+            width: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px; /* Slightly increased for larger size */
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .video-title {
+            font-size: 24px; /* Increased from 20px to match larger videos */
+            font-weight: 500;
+            color: #000;
+            margin-top: 24px; /* Increased from 16px */
+            font-family: 'Poppins', sans-serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <!-- Add logo -->
+        <img src="logo.svg" alt="Guitar Upohar Logo" class="logo">
+        
+        <div class="border-left"></div>
+        <div class="border-right"></div>
+        
+        <div class="jaapi">
+            <img src="topjaapi.svg" alt="Decorative Jaapi">
+        </div>
+
+        <div class="content-wrapper">
+            <div class="text-block">
+                <p class="assamese-text">গান গাবলৈ শিকক আৰু আপোনাৰ প্ৰিয় অসমী<br>গানত গীটাৰ বজাওক</p>
+                <div class="english-text">
+                    Learn to Sing and Play Guitar to your favourite 
+                    <span class="assamese-songs">Assamese Songs</span>
+                </div>
+            </div>
+            
+            <div class="cta-block">
+                <button class="cta-button">Enroll Now</button>
+                <button class="cta-button">Contact us</button>
+            </div>
+        </div>
+        <img src="heroimage.svg" alt="Guitar and Traditional Instruments" class="hero-image">
+    </section>
+
+    <!-- New courses section -->
+    <section class="courses-section">
+        <h2 class="section-heading">Courses We Offer</h2>
+        <div class="courses-container">
+            <div class="course-card">
+                <h3>Month 1</h3>
+                <ul class="course-list">
+                    <li>PARTS OF THE GUITAR</li>
+                    <li>OPEN STRING NAMES</li>
+                    <li>TUNING YOUR FIRST GUITAR</li>
+                    <li>READING TABS AND PLAYING HALF CHORDS</li>
+                </ul>
+            </div>
+
+            <div class="course-card">
+                <h3>Month 2</h3>
+                <ul class="course-list">
+                    <li>MUSIC THEORY:</li>
+                    <li class="scale-header">SCALES -</li>
+                    <li class="scale-list">C MAJOR, G MAJOR, D MAJOR, E MINOR, A MINOR</li>
+                    <li>APPLYING TABS TO PLAY SIMPLE MELODIES</li>
+                    <li>STRUMMING PATTERNS</li>
+                    <li>LEARN TO SING AND PLAY MANUH MANUH HOR BABE</li>
+                </ul>
+            </div>
+
+            <div class="course-card">
+                <h3>Month 3 & 4</h3>
+                <ul class="course-list">
+                    <li>SING AND PLAY DEKHA NAI</li>
+                    <li>SING AND PLAY EI KHONI GAON</li>
+                </ul>
+            </div>
+        </div>
+        <a href="#" class="download-link">
+            <svg class="download-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 16L12 8M12 16L9 13M12 16L15 13" stroke="#EB1C25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 15V16C3 18.2091 4.79086 20 7 20H17C19.2091 20 21 18.2091 21 16V15" stroke="#EB1C25" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            download the detailed lesson plan here
+        </a>
+    </section>
+
+    <!-- Demo Videos section -->
+    <section class="demo-videos-section">
+        <h2 class="section-heading">Demo Videos</h2>
+        <div class="videos-container">
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/ybpyklEFF9o" 
+                        title="Manuh Hey Manuhor Babe"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <h3 class="video-title">"Manuh Manuh Hor Bhabe"</h3>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/rYokpTy0xJI" 
+                        title="Dekha Nai"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <h3 class="video-title">"Dekha Nai"</h3>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/O-kKaBWzim4" 
+                        title="Ei Khoni Gaon"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <h3 class="video-title">"Ei Khoni Gaon"</h3>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 
