@@ -20,15 +20,16 @@
             position: relative;
             display: flex;
             align-items: center;
-            padding-left: 166px;
-            overflow: hidden; /* Added to ensure image doesn't create scrollbars */
+            justify-content: flex-start;
+            padding: 24px 0 0 160px;
+            overflow: hidden;
         }
 
         .border-left,
         .border-right {
-            position: absolute; /* Changed from fixed to absolute */
+            position: absolute;
             top: 0;
-            height: 100%; /* Changed from 100vh to 100% */
+            height: 100%;
             width: 50px;
             background-image: url('herosectionborder.svg');
             background-repeat: repeat-y;
@@ -60,16 +61,21 @@
         }
 
         .content-wrapper {
+            flex: 0 1 auto;
             display: flex;
             flex-direction: column;
             gap: 48px;
-            margin-top: 0;
+            z-index: 1;
+            align-items: flex-start;
+            margin-right: auto;
+            margin-top: 120px;
+            position: relative;
         }
 
         .text-block {
             display: flex;
             flex-direction: column;
-            gap: 4px; /* Reduced spacing between Assamese and English text to 4px */
+            gap: 4px;
         }
 
         .assamese-text {
@@ -107,27 +113,27 @@
         .cta-button:first-child {
             background: #CE4245;
             border: none;
-            color: white; /* Added to ensure text is visible on red background */
+            color: white;
         }
 
         .hero-image {
             position: absolute;
             right: 120px;
-            bottom: 0;
-            width: 500px;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 600px;
+            height: auto;
+            z-index: 0;
+            margin-top: 140px;
         }
 
-        /* Add logo styling */
         .logo {
-            position: absolute;
-            top: 24px; /* Adjust top spacing as needed */
             left: 50%;
-            transform: translateX(-50%); /* Centers the logo */
-            width: 200px; /* Adjust width as needed */
+            transform: translateX(-50%);
+            width: 200px;
             height: auto;
         }
 
-        /* Add new styles for courses section */
         .courses-section {
             padding: 80px 0;
             text-align: center;
@@ -152,7 +158,6 @@
             background-color: #EB1C25;
         }
 
-        /* Course cards styling */
         .courses-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -189,8 +194,8 @@
             gap: 8px;
             font-size: 16px;
             line-height: 1.5;
-            padding-left: 16px; /* Add consistent padding for all items */
-            position: relative; /* For bullet point positioning */
+            padding-left: 16px;
+            position: relative;
         }
 
         .course-list li::before {
@@ -200,7 +205,6 @@
             left: 0;
         }
 
-        /* Add new style for scale items */
         .scale-header {
             margin-bottom: 8px !important;
         }
@@ -212,10 +216,9 @@
 
         .scale-header::before,
         .scale-list::before {
-            display: none !important; /* Removes bullet points */
+            display: none !important;
         }
 
-        /* Update scale items styling */
         .scale-header,
         .scale-list {
             padding-left: 0 !important;
@@ -227,7 +230,6 @@
             display: none !important;
         }
 
-        /* Update download link styles */
         .download-link {
             display: flex;
             align-items: center;
@@ -244,11 +246,10 @@
         }
 
         .download-icon {
-            width: 16px; /* Adjusted to match text height */
-            height: 16px; /* Adjusted to match text height */
+            width: 16px;
+            height: 16px;
         }
 
-        /* Demo Videos section styles */
         .demo-videos-section {
             padding: 80px 0;
             text-align: center;
@@ -271,7 +272,7 @@
         .video-container {
             position: relative;
             width: 100%;
-            aspect-ratio: 16/9; /* This ensures proper video dimensions */
+            aspect-ratio: 16/9;
             border-radius: 8px;
             margin-bottom: 8px;
             overflow: hidden;
@@ -291,12 +292,11 @@
             font-size: 20px;
             font-weight: 500;
             color: #000;
-            margin-top: 8px; /* Reduced from 16px to 8px */
+            margin-top: 8px;
             font-family: 'Poppins', sans-serif;
             font-style: italic;
         }
 
-        /* Enroll Now section styles */
         .enroll-section {
             padding: 80px 0;
             text-align: center;
@@ -318,7 +318,7 @@
         .form-section {
             flex: 1;
             max-width: 600px;
-            text-align: left; /* Ensure form section is left-aligned */
+            text-align: left;
         }
 
         .form-iframe {
@@ -331,7 +331,7 @@
 
         .form-group {
             margin-bottom: 24px;
-            text-align: left; /* Ensure form groups are left-aligned */
+            text-align: left;
         }
 
         .form-label {
@@ -339,7 +339,7 @@
             margin-bottom: 8px;
             font-size: 16px;
             color: #333;
-            text-align: left; /* Explicitly set labels to left-aligned */
+            text-align: left;
         }
 
         .form-input {
@@ -379,14 +379,13 @@
             max-width: 400px;
             height: auto;
             position: sticky;
-            top: 24px; /* This will make the image stick while scrolling the form */
+            top: 24px;
         }
 
-        /* Pricing section styles */
         .pricing-section {
             padding: 80px 0;
             text-align: center;
-            background-color: #F2EEE3; /* Same as hero section background */
+            background-color: #F2EEE3;
         }
 
         .pricing-container {
@@ -451,7 +450,6 @@
             font-size: 16px;
         }
 
-        /* Contact section styles */
         .contact-section {
             padding: 80px 0;
             text-align: center;
@@ -462,8 +460,8 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            margin-left: 40px;  /* Add consistent margin */
-            margin-right: 40px; /* Add consistent margin */
+            margin-left: 40px;
+            margin-right: 40px;
             padding: 0 24px;
             display: flex;
             justify-content: space-between;
@@ -475,13 +473,13 @@
         }
 
         .contact-method {
-            margin-bottom: 48px; /* Increased margin to accommodate larger elements */
+            margin-bottom: 48px;
             text-align: left;
         }
 
         .contact-icon {
-            width: 48px; /* Increased from 32px */
-            height: 48px; /* Increased from 32px */
+            width: 48px;
+            height: 48px;
             color: #CE4245;
             margin-bottom: 16px;
             display: block;
@@ -490,17 +488,17 @@
 
         .contact-label {
             color: #CE4245;
-            font-size: 32px; /* Increased from 24px */
-            margin-bottom: 12px; /* Slightly increased */
+            font-size: 32px;
+            margin-bottom: 12px;
             text-align: left;
         }
 
         .contact-value {
-            font-size: 24px; /* Increased from 20px */
+            font-size: 24px;
             color: #333;
             text-decoration: none;
             display: block;
-            line-height: 1.6; /* Adjusted for larger text */
+            line-height: 1.6;
             text-align: left;
         }
 
@@ -511,13 +509,12 @@
 
         .contact-image {
             width: 300px;
-            height: 450px; /* Increased height */
+            height: 450px;
             object-fit: cover;
             border-radius: 16px;
             border: 2px solid #F1BE69;
         }
 
-        /* General responsive styles */
         @media (max-width: 1024px) {
             .container, 
             .videos-container,
@@ -534,7 +531,6 @@
                 padding: 0 24px;
             }
 
-            /* Additional LG breakpoint styles */
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 40px;
@@ -563,70 +559,43 @@
             }
         }
 
-        /* Tablet styles */
         @media (max-width: 768px) {
-            /* Header */
             .nav-links {
                 gap: 24px;
             }
 
-            /* Hero section */
             .hero-section {
+                flex-direction: column;
                 padding: 1.5rem;
                 padding-left: 60px;
-                min-height: 100vh;
                 justify-content: center;
             }
 
-            .hero-content {
-                width: 100%;
-                max-width: 100%;
-                margin: 0;
-                padding: 0 1rem;
-            }
-
             .content-wrapper {
-                transform: scale(0.9);
-                margin: 0 auto;
-                width: 100%;
-                max-width: 600px;
+                margin-top: 60px;
+                flex: none;
+                align-items: center;
             }
 
             .hero-image {
                 position: relative;
                 right: auto;
-                width: 80%;
-                max-width: 400px;
+                top: auto;
+                transform: none;
+                max-width: 80%;
                 margin: 2rem auto;
-                transform: scale(1);
+                margin-top: 0;
             }
 
-            /* Adjust borders for mobile */
-            .border-left,
-            .border-right {
-                width: 30px;
-            }
-
-            .border-left {
-                left: 8px;
-            }
-
-            .border-right {
-                right: 8px;
-            }
-
-            /* Features section */
             .features-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 24px;
             }
 
-            /* Videos section */
             .video-wrapper {
                 margin-bottom: 32px;
             }
 
-            /* Pricing section */
             .pricing-container {
                 flex-direction: column;
                 align-items: center;
@@ -638,7 +607,6 @@
                 max-width: 400px;
             }
 
-            /* Contact section */
             .contact-container {
                 flex-direction: column;
                 gap: 48px;
@@ -656,19 +624,15 @@
             }
         }
 
-        /* Mobile styles */
         @media (max-width: 480px) {
-            /* Header */
             .nav-links {
-                display: none; /* Consider adding a mobile menu */
+                display: none;
             }
 
-            /* Features section */
             .features-grid {
                 grid-template-columns: 1fr;
             }
 
-            /* Contact section */
             .contact-info {
                 flex-direction: column;
                 align-items: center;
@@ -696,7 +660,6 @@
                 aspect-ratio: 2/3;
             }
 
-            /* Typography adjustments */
             h1 {
                 font-size: 32px;
             }
@@ -718,7 +681,6 @@
             }
         }
 
-        /* Additional adjustments for very small devices */
         @media (max-width: 360px) {
             .container, 
             .videos-container,
@@ -732,7 +694,6 @@
             }
         }
 
-        /* SM - 640px */
         @media (max-width: 640px) {
             .container, 
             .videos-container,
@@ -803,7 +764,6 @@
             }
         }
 
-        /* MD - 768px */
         @media (min-width: 641px) and (max-width: 768px) {
             .container {
                 padding: 0 24px;
@@ -837,7 +797,6 @@
             }
         }
 
-        /* XL - 1280px */
         @media (min-width: 1025px) and (max-width: 1280px) {
             .container {
                 max-width: 1200px;
@@ -854,7 +813,6 @@
             }
         }
 
-        /* 2XL - 1536px */
         @media (min-width: 1281px) {
             .container {
                 max-width: 1400px;
@@ -875,7 +833,6 @@
             }
         }
 
-        /* Ensure smooth transitions */
         .hero-content,
         .features-grid,
         .contact-container,
@@ -884,9 +841,9 @@
             transition: all 0.3s ease-in-out;
         }
 
-        /* Hero breakpoints from largest to smallest */
         @media screen and (max-width: 1280px) {
             .hero-section {
+                padding: 1.5rem;
                 padding-left: 150px;
             }
 
@@ -905,69 +862,16 @@
             }
         }
 
-        /* Custom breakpoint for 1080px */
         @media screen and (max-width: 1080px) {
-            .hero-section {
-                padding: 1.5rem 0;
-                position: relative;
-            }
-
-            .hero-content {
-                max-width: 95%;
-                margin: 0 auto;
-                padding: 0 3rem;
-                gap: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .hero-text {
-                flex: 0 1 45%;
-                padding-left: 2rem;
-                padding-right: 1rem;
-                max-width: 45%;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-                line-height: 1.2;
-                margin-bottom: 1rem;
-            }
-
-            .hero-text h1 span {
-                font-size: 1.8rem;
-                display: block;
-                margin-bottom: 0.5rem;
-            }
-
-            .hero-text p {
-                font-size: 1.1rem;
-                line-height: 1.5;
-                margin-bottom: 1.5rem;
-            }
-
             .hero-image {
-                flex: 0 1 50%;
-                max-width: 70%;
-                height: auto;
-                margin-right: 2rem;
-            }
-
-            .hero-buttons {
-                padding-left: 2rem;
-                display: flex;
-                gap: 1rem;
-            }
-
-            .hero-button {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
+                right: 80px;
+                max-width: 500px;
             }
         }
 
         @media screen and (max-width: 950px) {
             .hero-section {
+                padding: 1.5rem;
                 padding-left: 80px;
                 overflow: hidden;
             }
@@ -993,46 +897,43 @@
 
         @media screen and (max-width: 768px) {
             .hero-section {
+                flex-direction: column;
                 padding: 1.5rem;
-                padding-left: 60px;
-                min-height: 100vh;
                 justify-content: center;
+                text-align: center;
             }
 
             .content-wrapper {
-                transform: scale(0.8);
-                margin: 0 auto;
-                width: 100%;
-                max-width: 600px;
+                flex: none;
+                align-items: center;
             }
 
             .hero-image {
                 position: relative;
                 right: auto;
-                width: 80%;
-                max-width: 400px;
+                top: auto;
+                transform: none;
+                max-width: 80%;
                 margin: 2rem auto;
-                transform: scale(1);
+                margin-top: 0;
             }
         }
 
-        /* Hide character image below 820px */
         @media screen and (max-width: 820px) {
             .character-image {
                 display: none;
             }
 
             .enroll-container {
-                justify-content: center; /* Center the form */
+                justify-content: center;
             }
 
             .form-section {
-                max-width: 100%; /* Allow form to take full width */
+                max-width: 100%;
                 flex: 1;
             }
         }
 
-        /* Add base container styles */
         .container {
             width: 100%;
             max-width: 1400px;
@@ -1040,7 +941,6 @@
             padding: 0 24px;
         }
 
-        /* Update section styles */
         .hero-section,
         .courses-section,
         .demo-videos-section,
@@ -1053,7 +953,6 @@
             align-items: center;
         }
 
-        /* Update container styles for different breakpoints */
         @media (max-width: 1280px) {
             .container {
                 max-width: 1200px;
@@ -1081,6 +980,7 @@
             }
 
             .hero-section {
+                padding: 1.5rem;
                 padding-left: 60px;
                 padding-right: 60px;
             }
@@ -1093,12 +993,12 @@
             }
 
             .hero-section {
+                padding: 1.5rem;
                 padding-left: 30px;
                 padding-right: 30px;
             }
         }
 
-        /* Update specific section containers */
         .courses-container,
         .videos-container,
         .pricing-container,
@@ -1110,7 +1010,6 @@
             padding: 0 24px;
         }
 
-        /* Update hero content centering */
         .hero-content {
             width: 100%;
             max-width: 1200px;
@@ -1120,7 +1019,6 @@
             align-items: center;
         }
 
-        /* Add new breakpoint for contact images at 1200px */
         @media screen and (max-width: 1200px) {
             .contact-container {
                 margin-left: 20px;
@@ -1128,8 +1026,8 @@
             }
 
             .contact-image {
-                width: 255px;  /* Reduced from 300px by 15% */
-                height: 382px; /* Reduced from 450px by 15% */
+                width: 255px;
+                height: 382px;
             }
 
             .contact-images {
@@ -1137,7 +1035,6 @@
             }
         }
 
-        /* Remove margins completely for mobile views */
         @media (max-width: 768px) {
             .contact-container {
                 margin-left: 0;
@@ -1148,13 +1045,12 @@
         @media (max-width: 480px) {
             .contact-image {
                 width: 100%;
-                max-width: 240px; /* Match the 1200px breakpoint max size */
+                max-width: 240px;
                 height: auto;
                 aspect-ratio: 2/3;
             }
         }
 
-        /* Add margins for containers between 769px and 1279px */
         @media screen and (min-width: 769px) and (max-width: 1279px) {
             .courses-container,
             .videos-container,
@@ -1163,11 +1059,10 @@
             .contact-container {
                 margin-left: 30px;
                 margin-right: 30px;
-                width: calc(100% - 60px); /* Adjust width to account for margins */
+                width: calc(100% - 60px);
             }
         }
 
-        /* Update existing 768px breakpoint to remove margins */
         @media (max-width: 768px) {
             .courses-container,
             .videos-container,
@@ -1180,7 +1075,6 @@
             }
         }
 
-        /* Add new breakpoint for contact section layout change at 1000px */
         @media screen and (max-width: 1000px) {
             .contact-container {
                 flex-direction: column;
@@ -1188,7 +1082,7 @@
             }
 
             .contact-images {
-                order: -1; /* Move images to top */
+                order: -1;
                 width: 100%;
                 justify-content: center;
             }
@@ -1202,11 +1096,10 @@
             }
 
             .contact-method {
-                margin-bottom: 0; /* Remove bottom margin since we're using flex gap */
+                margin-bottom: 0;
             }
         }
 
-        /* Update existing mobile styles */
         @media (max-width: 480px) {
             .contact-info {
                 flex-direction: column;
@@ -1224,7 +1117,6 @@
             }
         }
 
-        /* Update courses container styles */
         .courses-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1234,14 +1126,12 @@
             padding: 0 24px;
         }
 
-        /* Add new breakpoint for courses layout between 480px and 800px */
         @media screen and (min-width: 480px) and (max-width: 800px) {
             .courses-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 24px;
             }
 
-            /* Target the last card to make it centered in the second row */
             .course-card:last-child {
                 grid-column: 1 / 3;
                 width: 50%;
@@ -1249,7 +1139,6 @@
             }
         }
 
-        /* Update existing mobile styles */
         @media (max-width: 480px) {
             .courses-container {
                 grid-template-columns: 1fr;
@@ -1261,23 +1150,21 @@
             }
         }
 
-        /* Add new breakpoint for contact images between 375px and 640px */
         @media screen and (min-width: 375px) and (max-width: 640px) {
             .contact-images {
-                flex-direction: row; /* Keep images side by side */
+                flex-direction: row;
                 justify-content: center;
-                gap: 16px; /* Reduce gap between images */
+                gap: 16px;
             }
 
             .contact-image {
-                width: 160px; /* Reduce image width */
-                height: 240px; /* Maintain aspect ratio */
-                margin: 0; /* Remove any margins */
+                width: 160px;
+                height: 240px;
+                margin: 0;
             }
         }
 
-        /* Update existing mobile styles for very small screens */
-        @media (max-width: 374px) {
+        @media screen and (max-width: 374px) {
             .contact-images {
                 flex-direction: column;
                 align-items: center;
@@ -1290,7 +1177,6 @@
             }
         }
 
-        /* Add styles for contact section below 640px */
         @media screen and (max-width: 640px) {
             .contact-info {
                 width: 100%;
@@ -1337,61 +1223,55 @@
             }
         }
 
-        /* Add styles for pricing section below 640px */
         @media screen and (max-width: 640px) {
-            /* Card size reduction */
             .pricing-card {
                 transform: scale(0.85);
                 transform-origin: center top;
             }
 
-            /* Price text adjustments */
             .price {
-                font-size: 40.8px; /* Reduced from 48px by 15% */
+                font-size: 40.8px;
             }
 
             .duration {
-                font-size: 20.4px; /* Reduced from 24px by 15% */
+                font-size: 20.4px;
             }
 
-            /* Resource section adjustments */
             .resource-button {
                 transform: scale(0.85);
                 transform-origin: center;
-                padding: 14px 28px; /* Slightly reduced padding */
-                font-size: 15.3px; /* Reduced from 18px by 15% */
+                padding: 14px 28px;
+                font-size: 15.3px;
             }
 
             .resource-title {
-                font-size: 20.4px; /* Reduced from 24px by 15% */
+                font-size: 20.4px;
             }
 
             .resource-description {
-                font-size: 13.6px; /* Reduced from 16px by 15% */
+                font-size: 13.6px;
             }
 
-            /* Container padding adjustments */
             .pricing-container {
                 padding: 0 16px;
             }
 
             .resource-section {
-                margin-top: 48px; /* Reduced from 64px */
+                margin-top: 48px;
             }
         }
 
-        /* Add padding for resource title text below 400px */
         @media screen and (max-width: 400px) {
             .resource-title {
                 padding-left: 10px;
                 padding-right: 10px;
-                font-size: 20.4px; /* Keep the 15% reduction from previous media query */
+                font-size: 20.4px;
             }
 
             .resource-description {
                 padding-left: 10px;
                 padding-right: 10px;
-                font-size: 13.6px; /* Keep the 15% reduction from previous media query */
+                font-size: 13.6px;
             }
         }
 
@@ -1400,12 +1280,11 @@
         }
 
         .cta-button {
-            text-decoration: none; /* Remove underline from links */
-            display: inline-block; /* Keep button appearance */
+            text-decoration: none;
+            display: inline-block;
             cursor: pointer;
         }
 
-        /* Pricing section mobile breakpoint */
         @media screen and (max-width: 700px) {
             .resource-container {
                 padding-left: 20px;
@@ -1413,17 +1292,16 @@
             }
         }
 
-        /* Add new breakpoint for very small screens below 350px */
         @media screen and (max-width: 350px) {
             .contact-images {
                 flex-direction: row;
                 justify-content: center;
-                gap: 12px; /* Slightly reduced gap */
+                gap: 12px;
             }
 
             .contact-image {
-                width: 128px; /* Reduced from 160px by 20% */
-                height: 192px; /* Reduced from 240px by 20% */
+                width: 128px;
+                height: 192px;
                 margin: 0;
             }
         }
@@ -1431,7 +1309,6 @@
 </head>
 <body>
     <section class="hero-section">
-        <!-- Add logo -->
         <img src="Logo.svg" alt="Guitar Upohar Logo" class="logo">
         
         <div class="border-left"></div>
@@ -1458,7 +1335,6 @@
         <img src="heroimage.svg" alt="Guitar and Traditional Instruments" class="hero-image">
     </section>
 
-    <!-- New courses section -->
     <section class="courses-section">
         <h2 class="section-heading">Courses We Offer</h2>
         <div class="courses-container">
@@ -1501,7 +1377,6 @@
         </a>
     </section>
 
-    <!-- Demo Videos section -->
     <section class="demo-videos-section">
         <h2 class="section-heading">Demo Videos</h2>
         <div class="videos-container">
@@ -1543,7 +1418,6 @@
         </div>
     </section>
 
-    <!-- Enroll Now section -->
     <section id="enroll-section" class="enroll-section">
         <h2 class="section-heading">Enroll With Us</h2>
         <div class="enroll-container">
@@ -1586,7 +1460,6 @@
         </div>
     </section>
 
-    <!-- Pricing section -->
     <section class="pricing-section">
         <h2 class="section-heading">Pricing</h2>
         <div class="pricing-container">
@@ -1616,7 +1489,6 @@
         </div>
     </section>
 
-    <!-- Contact Us section -->
     <section id="contact-section" class="contact-section">
         <h2 class="section-heading">Contact Us</h2>
         <div class="contact-container">
