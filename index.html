@@ -1337,6 +1337,64 @@
             }
         }
 
+        /* Add styles for pricing section below 640px */
+        @media screen and (max-width: 640px) {
+            /* Card size reduction */
+            .pricing-card {
+                transform: scale(0.85);
+                transform-origin: center top;
+            }
+
+            /* Price text adjustments */
+            .price {
+                font-size: 40.8px; /* Reduced from 48px by 15% */
+            }
+
+            .duration {
+                font-size: 20.4px; /* Reduced from 24px by 15% */
+            }
+
+            /* Resource section adjustments */
+            .resource-button {
+                transform: scale(0.85);
+                transform-origin: center;
+                padding: 14px 28px; /* Slightly reduced padding */
+                font-size: 15.3px; /* Reduced from 18px by 15% */
+            }
+
+            .resource-title {
+                font-size: 20.4px; /* Reduced from 24px by 15% */
+            }
+
+            .resource-description {
+                font-size: 13.6px; /* Reduced from 16px by 15% */
+            }
+
+            /* Container padding adjustments */
+            .pricing-container {
+                padding: 0 16px;
+            }
+
+            .resource-section {
+                margin-top: 48px; /* Reduced from 64px */
+            }
+        }
+
+        /* Add padding for resource title text below 400px */
+        @media screen and (max-width: 400px) {
+            .resource-title {
+                padding-left: 10px;
+                padding-right: 10px;
+                font-size: 20.4px; /* Keep the 15% reduction from previous media query */
+            }
+
+            .resource-description {
+                padding-left: 10px;
+                padding-right: 10px;
+                font-size: 13.6px; /* Keep the 15% reduction from previous media query */
+            }
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -1345,6 +1403,29 @@
             text-decoration: none; /* Remove underline from links */
             display: inline-block; /* Keep button appearance */
             cursor: pointer;
+        }
+
+        /* Pricing section mobile breakpoint */
+        @media screen and (max-width: 700px) {
+            .resource-container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        /* Add new breakpoint for very small screens below 350px */
+        @media screen and (max-width: 350px) {
+            .contact-images {
+                flex-direction: row;
+                justify-content: center;
+                gap: 12px; /* Slightly reduced gap */
+            }
+
+            .contact-image {
+                width: 128px; /* Reduced from 160px by 20% */
+                height: 192px; /* Reduced from 240px by 20% */
+                margin: 0;
+            }
         }
     </style>
 </head>
