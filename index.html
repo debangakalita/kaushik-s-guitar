@@ -68,7 +68,7 @@
             z-index: 1;
             align-items: flex-start;
             margin-right: auto;
-            margin-top: 120px;
+            margin-top: 160px;
             position: relative;
         }
 
@@ -87,12 +87,15 @@
             font-size: 48px;
             max-width: 600px;
             line-height: 1.2;
+            white-space: nowrap;
         }
 
         .assamese-songs {
             color: #CE4245;
             font-size: 48px;
             font-weight: 600;
+            display: block;
+            margin-top: 4px;
         }
 
         .cta-block {
@@ -128,6 +131,7 @@
         }
 
         .logo {
+            position: absolute;
             left: 50%;
             transform: translateX(-50%);
             width: 200px;
@@ -864,26 +868,39 @@
 
         @media screen and (max-width: 1080px) {
             .hero-image {
-                right: 80px;
+                right: 100px;
                 max-width: 500px;
+            }
+
+            .english-text {
+                font-size: 40px;
+            }
+
+            .assamese-songs {
+                font-size: 40px;
             }
         }
 
         @media screen and (max-width: 950px) {
+            .jaapi {
+                display: none;
+            }
+
             .hero-section {
-                padding: 1.5rem;
-                padding-left: 80px;
+                padding: 24px 0 1.5rem 80px;
                 overflow: hidden;
             }
 
             .content-wrapper {
                 transform: scale(0.85);
+                margin-top: 60px;
             }
 
             .hero-image {
-                width: 380px;
                 right: 60px;
+                width: 380px;
                 transform: scale(0.85);
+                margin-top: 0;
             }
 
             .border-left {
@@ -893,9 +910,27 @@
             .border-right {
                 right: 12px;
             }
+
+            .logo {
+                position: relative;
+                left: auto;
+                transform: none;
+                width: 180px;
+                margin: 0 auto 24px;
+                display: block;
+            }
         }
 
         @media screen and (max-width: 768px) {
+            .logo {
+                position: relative;
+                left: auto;
+                transform: none;
+                width: 180px;
+                margin: 100px auto 0;
+                display: block;
+            }
+
             .hero-section {
                 flex-direction: column;
                 padding: 1.5rem;
@@ -904,8 +939,12 @@
             }
 
             .content-wrapper {
+                margin-top: 60px;
+                margin-right: 0;
                 flex: none;
                 align-items: center;
+                transform: none;
+                gap: 24px;
             }
 
             .hero-image {
@@ -1305,6 +1344,34 @@
                 margin: 0;
             }
         }
+
+        /* Update styles for very small screens */
+        @media screen and (max-width: 430px) {
+            .assamese-text {
+                font-size: 14px;
+            }
+
+            .english-text {
+                font-size: 24px;
+            }
+
+            .assamese-songs {
+                font-size: 24px;
+            }
+
+            .cta-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .cta-block {
+                gap: 12px;
+            }
+
+            .logo {
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1322,7 +1389,8 @@
             <div class="text-block">
                 <p class="assamese-text">গান গাবলৈ শিকক আৰু আপোনাৰ প্ৰিয় অসমী<br>গানত গীটাৰ বজাওক</p>
                 <div class="english-text">
-                    Learn to Sing and Play Guitar to your favourite 
+                    Learn to Sing and Play<br>
+                    Guitar to your favourite<br>
                     <span class="assamese-songs">Assamese Songs</span>
                 </div>
             </div>
