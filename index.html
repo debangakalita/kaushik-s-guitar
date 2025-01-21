@@ -1390,14 +1390,16 @@
             }
         }
 
-        /* Add styles to hide border elements below 420px */
-        @media screen and (max-width: 420px) {
+        /* Update media query to hide border elements below 620px */
+        @media screen and (max-width: 620px) {
             .border-left,
             .border-right {
                 display: none; /* Hide both border elements */
             }
+        }
 
-            /* Keep existing styles */
+        /* Keep existing 420px media query for other styles */
+        @media screen and (max-width: 420px) {
             .assamese-text {
                 font-size: 14px;
             }
