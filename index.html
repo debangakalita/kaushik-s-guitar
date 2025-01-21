@@ -1336,12 +1336,22 @@
                 margin: 0;
             }
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .cta-button {
+            text-decoration: none; /* Remove underline from links */
+            display: inline-block; /* Keep button appearance */
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <section class="hero-section">
         <!-- Add logo -->
-        <img src="logo.svg" alt="Guitar Upohar Logo" class="logo">
+        <img src="Logo.svg" alt="Guitar Upohar Logo" class="logo">
         
         <div class="border-left"></div>
         <div class="border-right"></div>
@@ -1360,8 +1370,8 @@
             </div>
             
             <div class="cta-block">
-                <button class="cta-button">Enroll Now</button>
-                <button class="cta-button">Contact us</button>
+                <a href="#enroll-section" class="cta-button">Enroll Now</a>
+                <a href="#contact-section" class="cta-button">Contact us</a>
             </div>
         </div>
         <img src="heroimage.svg" alt="Guitar and Traditional Instruments" class="hero-image">
@@ -1453,7 +1463,7 @@
     </section>
 
     <!-- Enroll Now section -->
-    <section class="enroll-section">
+    <section id="enroll-section" class="enroll-section">
         <h2 class="section-heading">Enroll With Us</h2>
         <div class="enroll-container">
             <div class="form-section">
@@ -1491,7 +1501,7 @@
                     <button type="submit" class="submit-button">Submit</button>
                 </form>
             </div>
-            <img src="character.svg" alt="Guitar Player Character" class="character-image">
+            <img src="Character.svg" alt="Guitar Player Character" class="character-image">
         </div>
     </section>
 
@@ -1526,7 +1536,7 @@
     </section>
 
     <!-- Contact Us section -->
-    <section class="contact-section">
+    <section id="contact-section" class="contact-section">
         <h2 class="section-heading">Contact Us</h2>
         <div class="contact-container">
             <div class="contact-info">
