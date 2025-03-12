@@ -1565,7 +1565,7 @@
         <h2 class="section-heading">Enroll With Us</h2>
         <div class="enroll-container">
             <div class="form-section">
-                <form action="https://submit-form.com/your-formspark-id" method="POST" id="enrollForm" onsubmit="return validateForm(event)">
+                <form action="https://submit-form.com/dPGKPBWr" id="enrollForm" onsubmit="return validateForm(event)">
                     <div class="form-group">
                         <label class="form-label">Name</label>
                         <input type="text" name="name" class="form-input" placeholder="Enter your name" required>
@@ -1593,13 +1593,10 @@
 
                     <div class="form-group">
                         <div class="g-recaptcha" 
-                             data-sitekey="6LfrHPIqAAAAANCOpf674Bmm9ynTH0zABX6hvVPf"
-                             data-callback="enableSubmit"></div>
+                             data-sitekey="6LfrHPIqAAAAANCOpf674Bmm9ynTH0zABX6hvVPf"></div>
                     </div>
 
-                    <input type="hidden" name="_recaptcha" id="recaptchaResponse">
-
-                    <button type="submit" class="submit-button" id="submitButton" disabled>Submit</button>
+                    <button type="submit" class="submit-button" id="submitButton">Submit</button>
                 </form>
             </div>
             <img src="Character.svg" alt="Guitar Player Character" class="character-image">
@@ -1666,11 +1663,6 @@
     </section>
 
     <script>
-        function enableSubmit(token) {
-            document.getElementById('submitButton').disabled = false;
-            document.getElementById('recaptchaResponse').value = token;
-        }
-
         function validateForm(event) {
             event.preventDefault();
             
@@ -1688,17 +1680,11 @@
                 submitButton.textContent = 'Submitting...';
 
                 const formData = new FormData(form);
-                formData.append('_recaptcha', recaptchaResponse);
+                formData.append('g-recaptcha-response', recaptchaResponse);
 
-                const formJson = Object.fromEntries(formData.entries());
-
-                fetch(form.action, {
+                fetch('https://submit-form.com/dPGKPBWr', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(formJson)
+                    body: formData
                 })
                 .then(response => {
                     if (!response.ok) {
