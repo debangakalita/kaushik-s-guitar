@@ -1593,12 +1593,13 @@
 
                     <div class="form-group">
                         <div class="g-recaptcha" 
-                             data-sitekey="6LfrHPIqAAAAANCOpf674Bmm9ynTH0zABX6hvVPf"></div>
+                             data-sitekey="6LfrHPIqAAAAANCOpf674Bmm9ynTH0zABX6hvVPf"
+                             data-callback="enableSubmit"></div>
                     </div>
 
-                    <input type="hidden" name="_captcha" id="captchaResponse">
+                    <input type="hidden" name="_recaptcha" id="recaptchaResponse">
 
-                    <button type="submit" class="submit-button" id="submitButton">Submit</button>
+                    <button type="submit" class="submit-button" id="submitButton" disabled>Submit</button>
                 </form>
             </div>
             <img src="Character.svg" alt="Guitar Player Character" class="character-image">
@@ -1665,6 +1666,11 @@
     </section>
 
     <script>
+        function enableSubmit(token) {
+            document.getElementById('submitButton').disabled = false;
+            document.getElementById('recaptchaResponse').value = token;
+        }
+
         function validateForm(event) {
             event.preventDefault();
             
@@ -1674,46 +1680,45 @@
                 return false;
             }
 
-            document.getElementById('captchaResponse').value = recaptchaResponse;
-
             const form = document.getElementById('enrollForm');
-            
             const submitButton = document.getElementById('submitButton');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Submitting...';
 
-            fetch(form.action, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: form.name.value,
-                    email: form.email.value,
-                    age: form.age.value,
-                    country: form.country.value,
-                    whatsapp: form.whatsapp.value,
-                    message: form.message.value,
-                    _captcha: recaptchaResponse
+            if (form.checkValidity()) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                const formData = new FormData(form);
+                formData.append('_recaptcha', recaptchaResponse);
+
+                const formJson = Object.fromEntries(formData.entries());
+
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formJson)
                 })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                alert('Form submitted successfully!');
-                form.reset();
-                grecaptcha.reset();
-                submitButton.disabled = false;
-                submitButton.textContent = 'Submit';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting the form. Please try again.');
-                submitButton.disabled = false;
-                submitButton.textContent = 'Submit';
-            });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    alert('Form submitted successfully!');
+                    form.reset();
+                    grecaptcha.reset();
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting the form. Please try again.');
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Submit';
+                });
+            } else {
+                form.reportValidity();
+            }
             
             return false;
         }
