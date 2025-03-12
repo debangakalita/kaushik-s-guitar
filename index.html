@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XurorZonkar</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         * {
             margin: 0;
@@ -1437,6 +1438,15 @@
                 gap: 8px;
             }
         }
+
+        .g-recaptcha {
+            margin: 20px 0;
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -1555,38 +1565,40 @@
         <h2 class="section-heading">Enroll With Us</h2>
         <div class="enroll-container">
             <div class="form-section">
-                <form id="enrollForm" action="https://submit-form.com/uEynJ2niO">
+                <form action="https://submit-form.com/your-formspark-id" method="POST" id="enrollForm" onsubmit="return validateForm(event)">
                     <div class="form-group">
-                        <label class="form-label" for="fullName">Name</label>
-                        <input type="text" id="fullName" name="fullName" class="form-input" placeholder="Enter your name">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" class="form-input" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age</label>
+                        <input type="number" name="age" class="form-input" placeholder="Enter your age" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Country</label>
+                        <input type="text" name="country" class="form-input" placeholder="Enter your country" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Whatsapp Number</label>
+                        <input type="tel" name="whatsapp" class="form-input" placeholder="Enter your WhatsApp number" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea name="message" class="form-textarea" placeholder="Write your message here"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email">
+                        <div class="g-recaptcha" 
+                             data-sitekey="6LfrHPIqAAAAANCOpf674Bmm9ynTH0zABX6hvVPf"></div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label" for="age">Age</label>
-                        <input type="number" id="age" name="age" class="form-input" placeholder="Enter your age">
-                    </div>
+                    <input type="hidden" name="_captcha" id="captchaResponse">
 
-                    <div class="form-group">
-                        <label class="form-label" for="country">Country</label>
-                        <input type="text" id="country" name="country" class="form-input" placeholder="Enter your country">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label" for="whatsapp">Whatsapp Number</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" class="form-input" placeholder="Enter your WhatsApp number">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label" for="message">Message</label>
-                        <textarea id="message" name="message" class="form-textarea" placeholder="Write your message here"></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-button">Submit</button>
+                    <button type="submit" class="submit-button" id="submitButton">Submit</button>
                 </form>
             </div>
             <img src="Character.svg" alt="Guitar Player Character" class="character-image">
@@ -1651,5 +1663,60 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                alert("Please complete the reCAPTCHA verification");
+                return false;
+            }
+
+            document.getElementById('captchaResponse').value = recaptchaResponse;
+
+            const form = document.getElementById('enrollForm');
+            
+            const submitButton = document.getElementById('submitButton');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: form.name.value,
+                    email: form.email.value,
+                    age: form.age.value,
+                    country: form.country.value,
+                    whatsapp: form.whatsapp.value,
+                    message: form.message.value,
+                    _captcha: recaptchaResponse
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                alert('Form submitted successfully!');
+                form.reset();
+                grecaptcha.reset();
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting the form. Please try again.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Submit';
+            });
+            
+            return false;
+        }
+    </script>
 </body>
 </html> 
