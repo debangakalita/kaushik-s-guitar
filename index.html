@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XurorZonkar</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://unpkg.com/@botpoison/browser" async></script>
     <style>
         * {
             margin: 0;
@@ -1439,10 +1439,6 @@
             }
         }
 
-        .g-recaptcha {
-            margin: 20px 0;
-        }
-
         .submit-button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
@@ -1565,7 +1561,7 @@
         <h2 class="section-heading">Enroll With Us</h2>
         <div class="enroll-container">
             <div class="form-section">
-                <form action="https://submit-form.com/dPGKPBWr" id="enrollForm" onsubmit="return validateForm(event)">
+                <form action="https://submit-form.com/uEynJ2niO" id="enrollForm" onsubmit="return validateForm(event)" data-botpoison-public-key="pk_44cabfff-58d9-4fa8-b8c1-7adb38c4de77">
                     <div class="form-group">
                         <label class="form-label">Name</label>
                         <input type="text" name="name" class="form-input" placeholder="Enter your name" required>
@@ -1589,11 +1585,6 @@
                     <div class="form-group">
                         <label class="form-label">Message</label>
                         <textarea name="message" class="form-textarea" placeholder="Write your message here"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="g-recaptcha" 
-                             data-sitekey="6LfrHPIqAAAAANCOpf674Bmm9ynTH0zABX6hvVPf"></div>
                     </div>
 
                     <button type="submit" class="submit-button" id="submitButton">Submit</button>
@@ -1666,42 +1657,47 @@
         function validateForm(event) {
             event.preventDefault();
             
-            const recaptchaResponse = grecaptcha.getResponse();
-            if (!recaptchaResponse) {
-                alert("Please complete the reCAPTCHA verification");
-                return false;
-            }
-
             const form = document.getElementById('enrollForm');
             const submitButton = document.getElementById('submitButton');
 
             if (form.checkValidity()) {
                 submitButton.disabled = true;
-                submitButton.textContent = 'Submitting...';
+                submitButton.textContent = 'Validating...';
 
-                const formData = new FormData(form);
-                formData.append('g-recaptcha-response', recaptchaResponse);
-
-                fetch('https://submit-form.com/dPGKPBWr', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    alert('Form submitted successfully!');
-                    form.reset();
-                    grecaptcha.reset();
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Submit';
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('There was an error submitting the form. Please try again.');
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Submit';
+                // Initialize Botpoison
+                const botpoison = new Botpoison({
+                    publicKey: 'pk_44cabfff-58d9-4fa8-b8c1-7adb38c4de77'
                 });
+
+                // Solve the challenge
+                botpoison.solve()
+                    .then(result => {
+                        const formData = new FormData(form);
+                        // Add Botpoison token to form data
+                        formData.append('_botpoison', result.solution);
+
+                        submitButton.textContent = 'Submitting...';
+
+                        return fetch('https://submit-form.com/uEynJ2niO', {
+                            method: 'POST',
+                            body: formData
+                        });
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        alert('Form submitted successfully!');
+                        form.reset();
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error submitting the form. Please try again.');
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit';
+                    });
             } else {
                 form.reportValidity();
             }
